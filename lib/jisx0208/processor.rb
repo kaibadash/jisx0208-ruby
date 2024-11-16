@@ -19,16 +19,16 @@ module JISX0208
       @second_level_ranges = collect_unicode_set(mappings, 0x5021, 0x7426)
     end
 
-    def contains_first_level_kanji?(string:)
+    def contains_first_level_kanji?(string)
       string.each_char.any? { |char| @first_level_ranges.include?(char.ord) }
     end
 
-    def contains_seconde_level_kanji?(string:)
+    def contains_seconde_level_kanji?(string)
       string.each_char.any? { |char| @second_level_ranges.include?(char.ord) }
     end
 
-    def contains_jisx0208_kanji?(string:)
-      contains_first_level_kanji?(string: string) || contains_seconde_level_kanji?(string: string)
+    def contains_jisx0208_kanji?(string)
+      contains_first_level_kanji?(string) || contains_seconde_level_kanji?(string)
     end
 
     private

@@ -9,16 +9,16 @@ module JISX0208
       @processor = Processor.new
     end
 
-    def contains_first_level_kanji?(string:)
-      @processor.contains_first_level_kanji?(string: string)
+    def contains_first_level_kanji?(string)
+      @processor.contains_first_level_kanji?(string)
     end
 
-    def contains_second_level_kanji?(string:)
-      @processor.contains_seconde_level_kanji?(string: string)
+    def contains_second_level_kanji?(string)
+      @processor.contains_seconde_level_kanji?(string)
     end
 
-    def contains_jisx0208_kanji?(string:)
-      @processor.contains_jisx0208_kanji?(string: string)
+    def contains_jisx0208_kanji?(string)
+      @processor.contains_jisx0208_kanji?(string)
     end
   end
 end
