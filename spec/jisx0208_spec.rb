@@ -1,11 +1,28 @@
 # frozen_string_literal: true
 
-RSpec.describe Jisx0208 do
-  it "has a version number" do
-    expect(Jisx0208::VERSION).not_to be nil
+require "spec_helper"
+
+RSpec.describe JISX0208::Code do
+  let(:code) { JISX0208::Code.new }
+
+  it "contains first level kanji" do
+    expect(code.contains_first_level_kanji?(string: "亜")).to eq(true)
+    expect(code.contains_first_level_kanji?(string: "弌")).to eq(false)
+    expect(code.contains_first_level_kanji?(string: "亜X")).to eq(true)
+    expect(code.contains_first_level_kanji?(string: "弌X")).to eq(false)
   end
 
-  it "does something useful" do
-    expect(false).to eq(true)
+  it "contains second level kanji" do
+    expect(code.contains_second_level_kanji?(string: "亜")).to eq(false)
+    expect(code.contains_second_level_kanji?(string: "弌")).to eq(true)
+    expect(code.contains_second_level_kanji?(string: "亜X")).to eq(false)
+    expect(code.contains_second_level_kanji?(string: "弌X")).to eq(true)
+  end
+
+  it "contains jisx0208 kanji" do
+    expect(code.contains_jisx0208_kanji?(string: "亜")).to eq(true)
+    expect(code.contains_jisx0208_kanji?(string: "弌")).to eq(true)
+    expect(code.contains_jisx0208_kanji?(string: "亜X")).to eq(true)
+    expect(code.contains_jisx0208_kanji?(string: "弌X")).to eq(true)
   end
 end
