@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative "JISX0208/version"
-require_relative "JISX0208/processor"
+require_relative "jisx0208/version"
+require_relative "jisx0208/processor"
 
 module JISX0208
   class Code
