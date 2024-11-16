@@ -10,10 +10,10 @@ inherit_mode:
     - Exclude
 
 AllCops:
-  TargetRubyVersion: 3.3
+  TargetRubyVersion: 3.0
   Exclude:
-    - 'Gemfile'
-    - 'bin/*'
-    - 'config/**/*'
-    - 'db/**/*'
-    - 'deploy/**/*'
+    - "Gemfile"
+    - "bin/*"
+    - "config/**/*"
+    - "db/**/*"
+    - "deploy/**/*"
