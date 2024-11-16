@@ -1,0 +1,5 @@
+# frozen_string_literal: true
+
+module Jisx0208
+  VERSION = "0.1.0"
+end
