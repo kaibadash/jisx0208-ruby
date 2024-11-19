@@ -6,21 +6,21 @@ RSpec.describe JISX0208::Code do
   let(:code) { JISX0208::Code.new }
 
   it "contains first level kanji" do
-    %w[亜 腕 駐 車 場 回 転 寿 司].each do |char|
+    %w(亜 腕 駐 車 場 回 転 寿 司).each do |char|
       expect(code.contains_first_level_kanji?(char)).to eq(true)
     end
 
-    %w[偃 龠 假 會 偕 偐 偈 做 偖].each do |char|
+    %w(偃 龠 假 會 偕 偐 偈 做 偖).each do |char|
       expect(code.contains_first_level_kanji?(char)).to eq(false)
     end
   end
 
   it "contains second level kanji" do
-    %w[亜 腕 駐 車 場 回 転 寿 司].each do |char|
+    %w(亜 腕 駐 車 場 回 転 寿 司).each do |char|
       expect(code.contains_second_level_kanji?(char)).to eq(false)
     end
 
-    %w[偃 龠 假 會 偕 偐 偈 做 偖].each do |char|
+    %w(偃 龠 假 會 偕 偐 偈 做 偖).each do |char|
       expect(code.contains_second_level_kanji?(char)).to eq(true)
     end
   end
