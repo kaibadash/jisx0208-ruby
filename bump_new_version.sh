@@ -12,7 +12,7 @@ if [ ! -f ~/.gem/credentials ]; then
 fi
 
 PROJECT_NAME="jisx0208"
-GITHUB_REPO="kaibadash/$PROJECT_NAME"
+GITHUB_REPO="kaibadash/jisx0208-ruby"
 VERSION=$1
 echo "Start bumping version: $VERSION"
 
