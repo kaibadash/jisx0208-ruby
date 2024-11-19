@@ -21,4 +21,9 @@ code.contains_seconde_level_kanji?("弌") # => true
 code.contains_seconde_level_kanji?("亜") # => false
 # same as (contains_first_level_kanji || contains_seconde_level_kanji)
 code.contains_jisx0208_kanji?("亜弌") # => true
+
+code.only_first_level_kanji?("回転寿司") # => true
+code.only_second_level_kanji?("偃龠偕") # => true
+# same as (only_first_level_kanji || only_second_level_kanji)
+code.only_jisx0208_kanji?("回転寿司偃龠偕") # => true
 ```

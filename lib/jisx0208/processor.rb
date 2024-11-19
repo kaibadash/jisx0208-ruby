@@ -31,6 +31,19 @@ module JISX0208
       contains_first_level_kanji?(string) || contains_seconde_level_kanji?(string)
     end
 
+    def only_first_level_kanji?(string)
+      string.each_char.all? { |char| @first_level_ranges.include?(char.ord) }
+    end
+
+    def only_second_level_kanji?(string)
+      string.each_char.all? { |char| @second_level_ranges.include?(char.ord) }
+    end
+
+    def only_jisx0208_kanji?(string)
+      jisx0208 = @first_level_ranges + @second_level_ranges
+      string.each_char.all? { |char| jisx0208.include?(char.ord) }
+    end
+
     private
 
     def collect_unicode_set(mappings, jisx_start, jisx_end)
