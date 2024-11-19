@@ -20,5 +20,17 @@ module JISX0208
     def contains_jisx0208_kanji?(string)
       @processor.contains_jisx0208_kanji?(string)
     end
+
+    def only_first_level_kanji?(string)
+      @processor.only_first_level_kanji?(string)
+    end
+
+    def only_second_level_kanji?(string)
+      @processor.only_second_level_kanji?(string)
+    end
+
+    def only_jisx0208_kanji?(string)
+      @processor.only_jisx0208_kanji?(string)
+    end
   end
 end
