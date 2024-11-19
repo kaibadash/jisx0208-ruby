@@ -7,11 +7,11 @@ module JISX0208
       file_path = File.join(File.dirname(__FILE__), "..", "..", "data", "JIS0208.TXT")
       file = File.open(file_path)
 
-      mappings = file.each_line.with_object([]) do |line, arr|
+      mappings = file.each_line.with_object({}) do |line, hash|
         next if line.start_with?("#")
 
-        _sjis, _, unicode, _others = line.split(" ")
-        arr << { jisx: unicode.to_i(16) }
+        _sjis, jisx, unicode, _others = line.split(" ")
+        hash[jisx.to_i(16)] = unicode.to_i(16)
       end
 
       # see http://ash.jp/code/unitbl21.htm
@@ -34,8 +34,8 @@ module JISX0208
     private
 
     def collect_unicode_set(mappings, jisx_start, jisx_end)
-      mappings.map do |unicode_value|
-        unicode_value[:jisx] if unicode_value[:jisx].between?(jisx_start, jisx_end)
+      mappings.map do |jisx, unicode|
+        unicode if jisx.between?(jisx_start, jisx_end)
       end.compact.to_set
     end
   end
