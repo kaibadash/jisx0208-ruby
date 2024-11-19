@@ -21,11 +21,11 @@ echo "Start bumping version: $VERSION"
 git checkout master
 git checkout -b release/$VERSION
 sed -i '' "s/VERSION = \".*\"/VERSION = \"$VERSION\"/" lib/$PROJECT_NAME/version.rb
-git commit -am "Bump version $VERSION"
 
 # Publish to rubygems
 gem build $PROJECT_NAME.gemspec
 bundle install
+git commit -am "Bump version $VERSION"
 gem push $PROJECT_NAME-$VERSION.gem
 
 # GitHub release
