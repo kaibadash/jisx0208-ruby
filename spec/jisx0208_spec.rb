@@ -68,4 +68,9 @@ RSpec.describe JISX0208::Code do
     expect(code.contains_jisx0208?("楽しい呪術廻戦。2作目マダ？ 100億部!w")).to eq(true)
     expect(code.contains_jisx0208?("Good! score 100!")).to eq(false)
   end
+
+  it "only contains common japanese characters" do
+    expect(code.only_common_japanese_characters?("楽しい呪術廻戦。２作目マダ？ｗ")).to eq(true)
+    expect(code.only_common_japanese_characters?("Good! score 100!")).to eq(false)
+  end
 end
