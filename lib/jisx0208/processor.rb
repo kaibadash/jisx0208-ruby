@@ -56,6 +56,12 @@ module JISX0208
       string.each_char.all? { |char| jisx0208.include?(char.ord) }
     end
 
+    # hiragana, katakana, multi byte symbols, first level kanji
+    def only_common_japanese_characters?(string)
+      common = @others_ranges + @first_level_ranges
+      string.each_char.all? { |char| common.include?(char.ord) }
+    end
+
     private
 
     def collect_unicode_set(mappings, jisx_start, jisx_end)

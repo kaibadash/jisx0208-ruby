@@ -40,5 +40,9 @@ module JISX0208
     def only_jisx0208?(string)
       @processor.only_jisx0208?(string)
     end
+
+    def only_common_japanese_characters?(string)
+      @processor.only_common_japanese_characters?(string)
+    end
   end
 end
