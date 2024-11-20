@@ -32,5 +32,13 @@ module JISX0208
     def only_jisx0208_kanji?(string)
       @processor.only_jisx0208_kanji?(string)
     end
+
+    def contains_jisx0208?(string)
+      @processor.contains_jisx0208?(string)
+    end
+
+    def only_jisx0208?(string)
+      @processor.only_jisx0208?(string)
+    end
   end
 end
