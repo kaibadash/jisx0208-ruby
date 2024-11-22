@@ -18,6 +18,9 @@ module JISX0208
       @first_level_ranges = collect_unicode_set(mappings, 0x3021, 0x4F53)
       @second_level_ranges = collect_unicode_set(mappings, 0x5021, 0x7426)
       @others_ranges = collect_unicode_set(mappings, 0x2120, 0x2840)
+      @common = @others_ranges + @first_level_ranges
+      @jisx0208_kanji = @first_level_ranges + @second_level_ranges
+      @jisx0208 = @first_level_ranges + @second_level_ranges + @others_ranges
     end
 
     def contains_first_level_kanji?(string)
@@ -47,19 +50,16 @@ module JISX0208
     end
 
     def only_jisx0208_kanji?(string)
-      jisx0208 = @first_level_ranges + @second_level_ranges
-      string.each_char.all? { |char| jisx0208.include?(char.ord) }
+      string.each_char.all? { |char| @jisx0208_kanji.include?(char.ord) }
     end
 
     def only_jisx0208?(string)
-      jisx0208 = @first_level_ranges + @second_level_ranges + @others_ranges
-      string.each_char.all? { |char| jisx0208.include?(char.ord) }
+      string.each_char.all? { |char| @jisx0208.include?(char.ord) }
     end
 
     # hiragana, katakana, multi byte symbols, first level kanji
     def only_common_japanese_characters?(string)
-      common = @others_ranges + @first_level_ranges
-      string.each_char.all? { |char| common.include?(char.ord) }
+      string.each_char.all? { |char| @common.include?(char.ord) }
     end
 
     private
